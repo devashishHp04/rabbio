@@ -1,6 +1,12 @@
 import { AppLayout } from '@/components/app-layout';
+import { getCurrentUser } from '@/services/auth';
+import { redirect } from 'next/navigation';
 
-export default function HelpPage() {
+export default async function HelpPage() {
+   const user = await getCurrentUser();
+    if (!user) {
+      return redirect('/');
+    }
   return (
     <AppLayout>
       <div className="space-y-6">

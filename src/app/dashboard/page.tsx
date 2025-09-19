@@ -4,9 +4,13 @@ import { getPipelines } from '@/services/pipeline';
 import DashboardClient from './client';
 import { teamMembers } from '@/lib/data';
 import { getCurrentUser } from '@/services/auth';
+import { redirect } from 'next/navigation';
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
+  if (!user) {
+    return redirect('/');
+  }
   const pipelines = await getPipelines(user);
 
   return (

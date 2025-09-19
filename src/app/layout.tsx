@@ -4,17 +4,20 @@ import './globals.css';
 import './print.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
+import { redirect } from 'next/navigation';
+import { getCurrentUser } from '@/services/auth';
 
 export const metadata: Metadata = {
   title: 'RABBIO Pipeline',
   description: 'Competitive intelligence and insights for the drug development pipeline.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+   
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

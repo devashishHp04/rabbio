@@ -2,9 +2,13 @@
 import { AppLayout } from '@/components/app-layout';
 import { getCurrentUser } from '@/services/auth';
 import LiteratureReviewClient from './client';
+import { redirect } from 'next/navigation';
 
 export default async function LiteratureReviewPage() {
-  const user = await getCurrentUser();
+   const user = await getCurrentUser();
+    if (!user) {
+      return redirect('/');
+    }
 
   return (
     <AppLayout>

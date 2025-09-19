@@ -5,8 +5,13 @@ import { getPipelines } from '@/services/pipeline';
 import { getCurrentUser } from '@/services/auth';
 import { Suspense } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { redirect } from 'next/navigation';
 
-function PipelineFallback() {
+async function PipelineFallback() {
+   const user = await getCurrentUser();
+    if (!user) {
+      return redirect('/');
+    }
     return (
         <div className="space-y-6">
             <div className="flex gap-4">
