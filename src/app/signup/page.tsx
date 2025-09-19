@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 import { handleSignup } from '../actions';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
-
+import image0 from "../../assets/pipelinex-logo.png"
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
@@ -58,7 +58,7 @@ export default function SignupPage() {
       <div className={cn("relative hidden lg:flex lg:w-1/2 flex-col items-center justify-center p-12 text-center", "bg-image-custom")} data-ai-hint="research lab">
          <div className="absolute inset-0 bg-black/50" />
          <div className="relative w-full max-w-md">
-            <img src="/pipelineX-logo.png" alt="PipelineX Logo"  className="h-16 w-auto mx-auto mb-6" />
+            <img src={image0.src} alt="PipelineX Logo"  className="h-16 w-auto mx-auto mb-6" />
             <h1 className="text-3xl font-bold text-white">Unlock R&D Insights</h1>
             <p className="text-slate-300 mt-2">
                 Join a community of researchers and innovators. Get the competitive edge with real-time pipeline intelligence.
