@@ -8,7 +8,9 @@ import { redirect } from 'next/navigation';
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
+  console.log(user,"user")
   if (!user) {
+    console.log("user not ")
     return redirect('/');
   }
   const pipelines = await getPipelines(user);
