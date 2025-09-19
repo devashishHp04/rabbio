@@ -8,8 +8,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2, CheckCircle, AlertTriangle } from 'lucide-react';
 import { createSampleUser } from './actions';
 import type { UserRole, Plan } from '@/lib/types';
-import { getCurrentUser } from '@/services/auth';
-import { redirect } from 'next/navigation';
+
 
 type UserType = {
     email: string;
@@ -24,16 +23,13 @@ const sampleUsers: UserType[] = [
     { email: 'researcher@rabbio.com', role: 'viewer', plan: 'free' },
 ];
 
-export default async function DevSetupPage() {
+export default  function DevSetupPage() {
 
   const { toast } = useToast();
   const [loadingUser, setLoadingUser] = useState<string | null>(null);
   const [createdUsers, setCreatedUsers] = useState<Set<string>>(new Set());
 
-   const user = await getCurrentUser();
-    if (!user) {
-      return redirect('/');
-    }
+  
 
   const handleCreateUser = async (user: UserType) => {
     setLoadingUser(user.email);
